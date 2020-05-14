@@ -1,0 +1,23 @@
+server:
+  servlet:
+    context-path: /logger
+  port: 8001
+
+
+spring:
+  application:
+    name: logger
+
+dubbo:
+  scan:
+    base-packages: com.tall.logger.service
+  protocol:
+    name: dubbo
+    port: 20882
+  registry:
+    address: zookeeper://139.224.245.115:2181
+    file:  ${user.home}/dubbo-cache/${spring.application.name}/dubbo.cache
+  monitor:
+    protocol: registry
+  consumer:
+    check: false
